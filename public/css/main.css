@@ -1,0 +1,84 @@
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+img{
+    max-width: 100%;
+}
+/* Class */
+.quitar-float{
+    float: none;
+}
+.espacio-arriba{
+    margin-top: 50px;
+}
+.espacio-arriba2{
+    margin-top: 35px;
+}
+.anton{
+    font-family: 'Anton', sans-serif;
+}
+.raleway{
+    font-family: 'Fredoka One', cursive;
+}
+.se-gris{
+background-color: #fccf2c;
+}
+.mediano{
+    font-size: 1.5em;
+}
+.vete-arriba{
+    vertical-align: top;
+}
+.vete-centro{
+    vertical-align: center;
+}
+.padding-largo{
+    padding: 5px 10px;
+
+}
+.grande{
+    font-size: 3em;
+}
+.verde{
+    color: #fccf2c;
+}
+.naranja{
+    color: #ed6438;
+}
+.retraso-1{
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+}
+.retraso-2{
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+    animation-delay: 2s;
+}
+.no-lista{
+    margin: 0px;
+    padding: 0px;
+}
+.inline-block{
+    float: none;
+    display: inline-block;
+    margin-right: -4px; 
+}
+.no-lista li{
+    list-style-type: none;
+}
+.espacio-derecha{
+    margin-right: 1em;
+}
+.espacio-izquierda{
+    margin-left: 1em;
+}
+/* Propiedades de los objetos en general*/
+.azul{
+    color: aqua;
+}
+a{
+    color: black;
+}

@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    title El suicidio en el siglo XXI
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/animate.css')
+    link(href='https://fonts.googleapis.com/css?family=Fredoka+One&display=swap', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Anton&display=swap', rel='stylesheet')
+  body
+    nav.se-gris.padding-largo.text-center.anton.mediano
+        ul.no-lista
+          li.col-md-2.inline-block
+            a(href='/' class="naranja") Inicio
+          li.col-md-2.inline-block
+            a(href='/acerca' class="naranja") Acerca del Tema
+          li.col-md-2.inline-block
+            a(href='/dashboard' class="naranja") DashBoard
+          li.col-md-2.inline-block
+            a(href='/globe' class="naranja") WebGL Globe
+          li.col-md-2.inline-block
+            a(href='/data' class="naranja") Datos
+    block contenido
+

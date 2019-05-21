@@ -1,0 +1,353 @@
+doctype html
+html(lang='en')
+  head
+    title El suicidio en el siglo XXI
+    meta(charset='utf-8')
+    meta(name='description', content='An interactive visualization of flight tests of all missiles launched by North Korea from 1984 to 2019. This data visualization was produced by Akihiko Kusanagi. The data for this visualization are sourced from the CNS North Korea Missile Test Database.')
+    meta(name='viewport', content='user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1')
+    meta(name='twitter:card', content='summary_large_image')
+    meta(name='twitter:site', content='@nagix')
+    meta(property='og:title', content='North Korea Missile Test Visualization')
+    meta(property='og:description', content='An interactive visualization of flight tests of all missiles launched by North Korea from 1984 to 2019. This data visualization was produced by Akihiko Kusanagi. The data for this visualization are sourced from the CNS North Korea Missile Test Database.')
+    meta(property='og:url', content='https://nagix.github.io/nk-missile-tests/')
+    meta(property='og:image', content='https://nagix.github.io/nk-missile-tests/images/screenshot.jpg')
+    link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/animate.css')
+    link(href='https://fonts.googleapis.com/css?family=Fredoka+One&display=swap', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Anton&display=swap', rel='stylesheet')
+  body#dataviz(onload='start()')
+     nav.se-gris.padding-largo.text-center.anton.mediano
+        ul.no-lista
+          li.col-md-2.inline-block
+            a(href='/' class="naranja") Inicio
+          li.col-md-2.inline-block
+            a(href='/acerca' class="naranja") Acerca del Tema
+          li.col-md-2.inline-block
+            a(href='/dashboard' class="naranja") DashBoard
+          li.col-md-2.inline-block
+            a(href='/globe' class="naranja") WebGL Globe
+          li.col-md-2.inline-block
+            a(href='/data' class="naranja") Datos
+    #wrapper
+      #loading
+        h2 Cargando datos de las tasas de suicidio de 1985 a 2016. Por favor espere...
+      div
+        table#marker_template.marker(style="left:'0px';top:'0px'")
+          tbody
+            tr
+              td
+                span#testText.test
+                .close
+            tr
+              td
+                span#detailText.detail
+            tr
+              td
+                span#descriptionText.description
+      #visualization
+        // 2D overlay elements go in here
+        #glContainer
+          // 3D webgl canvas here
+      script(src='js/Detector.js')
+      script(src='js/three-r87.min.js')
+      script(src='js/THREEx.KeyboardState.js')
+      script(src='js/THREEx.WindowResize.js')
+      script(src='js/jquery-3.4.1.min.js')
+      script(src='js/jquery-ui-1.12.1.custom.min.js')
+      script(src='js/RequestAnimationFrame.js')
+      script(src='js/ShaderExtras.js')
+      script(src='js/util.js')
+      script(src='js/mousekeyboard.js')
+      script(src='js/dataloading.js')
+      script(src='js/geopins.js')
+      script(src='js/visualize.js')
+      script(src='js/visualize_lines.js')
+      script(src='js/markers.js')
+      script(src='js/d3-5.9.2.min.js')
+      script(src='js/ui.controls.js')
+      script(src='js/hammer-2.0.8.min.js')
+      script#vertexshader(type='x-shader/x-vertex').
+        uniform float amplitude;
+        attribute float size;
+        attribute vec3 customColor;
+        varying vec3 vColor;
+        void main() {
+        vColor = customColor;
+        vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+        gl_PointSize = size;
+        gl_Position = projectionMatrix * mvPosition;
+        }
+      script#fragmentshader(type='x-shader/x-fragment').
+        uniform vec3 color;
+        uniform sampler2D texture;
+        varying vec3 vColor;
+        void main() {
+        gl_FragColor = vec4( color * vColor, 1.0 );
+        gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+        }
+      // Custom Shader Code for atmospheric glow
+      script#vertexShaderAtmosphere(type='x-shader/x-vertex').
+        varying vec3 vNormal;
+        varying vec3 vPosition;
+        void main() {
+        vNormal = normalize( normalMatrix * normal );
+        vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+        vPosition = normalize( vec3( mvPosition.x, mvPosition.y, mvPosition.z ) );
+        gl_Position = projectionMatrix * mvPosition;
+        }
+      // fragment shader a.k.a. pixel shader
+      script#fragmentShaderAtmosphere(type='x-shader/x-vertex').
+        varying vec3 vNormal;
+        varying vec3 vPosition;
+        void main() {
+        float intensity = dot( vNormal, vPosition ) * 2.5 - 1.92;
+        gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;
+        }
+      script(src='js/main.js', type='text/javascript')
+      script(type='text/javascript').
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-39988758-2', 'auto');
+        ga('send', 'pageview');
+      // All other hud can go here
+      #hudHeader.overlayTests.noPointer.espacio-arriba
+        h1.noPointer
+          .title Visualización de las tasas de suicidio de 1985 a 2016
+          .subtitle Visualización interactiva de las tasas de suicidio de 1985 a 2016
+      #hudButtons.overlayTests.noPointer.espacio-arriba
+        .hudButtonGroup
+          input.searchBtn.testsBtn.pointer(type='button', value='SEARCH')
+          br
+          input.aboutBtn.testsBtn.pointer(type='button', value='ABOUT')
+        input.testTextInput.pointer.noMapDrag(type='text', name='test')
+        .hudButtonGroup
+          input.tiltBtn.topViewBtn.testsBtn.pointer.noMapDrag(type='button')
+          br
+          input.tiltBtn.sideViewBtn.testsBtn.pointer.noMapDrag(type='button')
+        .hudButtonGroup
+          input.zoomBtn.zoomInBtn.testsBtn.pointer.noMapDrag(type='button', value='+')
+          br
+          input.zoomBtn.zoomOutBtn.testsBtn.pointer.noMapDrag(type='button', value='—')
+        #hudButtonHandle.pointer.noMapDrag
+      #outcomeBtns.overlayTests
+        .success
+          .label Success
+          br.clear
+        .failure
+          .label Failure
+          br.clear
+        .unknown
+          .label Unknown
+          br.clear
+      #history.overlayTests.noPointer
+        .graph
+          .close
+          .labels
+            .outcome TEST OUTCOME
+            .unknowns UNKNOWN
+            .failures FAILURE
+            .successes SUCCESS
+            br.clear
+          .container.noPointer
+        ul.timeline.pointer
+          li.wide
+            span 1984
+          li.narrow
+            span 1984
+          li.wide
+            span 1986
+          li.narrow
+            span 86
+          li.wide
+            span 1990
+          li.narrow
+            span 90
+          li.wide
+            span 1991
+          li.narrow
+            span 91
+          li.wide
+            span 1992
+          li.narrow
+            span 92
+          li.wide
+            span 1993
+          li.narrow
+            span 93
+          li.wide
+            span 1998
+          li.narrow
+            span 98
+          li.wide
+            span 2006
+          li.narrow
+            span 2006
+          li.wide
+            span 2009
+          li.narrow
+            span 09
+          li.wide
+            span 2012
+          li.narrow
+            span 12
+          li.wide
+            span 2013
+          li.narrow
+            span 13
+          li.wide
+            span 2014
+          li.narrow
+            span 14
+          li.wide
+            span 2015
+          li.narrow
+            span 15
+          li.wide
+            span 2016
+          li.narrow
+            span 16
+          li.wide
+            span 2017
+          li.narrow
+            span 17
+          li.wide
+            span 2019
+          li.narrow
+            span 2019
+          #handle.noMapDrag
+      #graphIcon.overlayTests
+      #missileTypeBtns.overlayTests
+        .missileTypeBtnGroup
+          .er-scud
+            .box
+              svg.check(height='16', width='16')
+                defs
+                  g#checkbutton
+                    circle(r='8', cy='8', cx='8', style='stroke:none')
+                    path(d='M 3.6801386,8.536309 L 6.9552837,11.971756 L 12.41386,3.9557141', style='fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round')
+                use(xlink:href='#checkbutton')
+            .label ER Scud
+            br.clear
+          .hwasong-12
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Hwasong-12
+            br.clear
+          .hwasong-14
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Hwasong-14
+            br.clear
+          .hwasong-15
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Hwasong-15
+            br.clear
+          .kn-02
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label KN-02
+            br.clear
+          .kn-23
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label KN-23
+            br.clear
+          .musudan
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Musudan
+            br.clear
+          .nodong
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Nodong
+            br.clear
+          .polaris-1
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Polaris-1
+            br.clear
+          .polaris-2
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Polaris-2
+            br.clear
+          .scud-b
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Scud-B
+            br.clear
+          .scud-b-marv
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Scud-B MaRV
+            br.clear
+          .scud-c
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Scud-C
+            br.clear
+          .scud-c-marv
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Scud-C MaRV
+            br.clear
+          .taepodong-1
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Taepodong-1
+            br.clear
+          .unha
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Unha
+            br.clear
+          .unha-3
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Unha-3
+            br.clear
+          .unknown
+            .box
+              svg.check(height='16', width='16')
+                use(xlink:href='#checkbutton')
+            .label Unknown
+            br.clear
+        #missileTypeBtnHandle.pointer.noMapDrag
+      #aboutContainer.overlayTests
+        .arrowUp
+        #aboutBox
+          .title Information about the data
+          .text
+            | This data visualization was produced by 
+            a(href='https://nagix.github.io/', target='_blank') Akihiko Kusanagi
+            | . The data for this visualization are sourced from 
+            a(href='http://www.nti.org/analysis/articles/cns-north-korea-missile-test-database/', target='_blank') the CNS North Korea Missile Test Database
+            | , which is the first database to record flight tests of all missiles launched by North Korea capable of delivering a payload of at least 500 kilograms (1102.31 pounds) a distance of at least 300 kilometers (186.4 miles). The database captures advancements in North Korea's missile program by documenting all such tests since the first one occurred in April 1984, and will be routinely updated as events warrant.
+            br
+            br
+            | For more info and source code, please see the 
+            a(href='https://github.com/nagix/nk-missile-tests', target='_blank') GitHub repository
+            | .

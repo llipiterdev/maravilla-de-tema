@@ -1,0 +1,34 @@
+extends ../layout.jade 
+block contenido
+  h1 Panel de administración
+  table(class="table" style="color:white")
+   caption Suicidios Actuales
+    thead
+      tr 
+        th ID
+        th country
+        th year
+        th sex
+        th age
+        th suicides_no
+        th population
+        th generation
+        th suicides_100kpop
+        th HDI_for_year
+        th gdp_for_year_$
+        th gdp_per_capita_$
+    tbody
+      each suicide in suicides
+        tr
+           td=suicide._id
+           td=suicide.country
+           td=suicide.year
+           td=suicide.sex
+           td=suicide.age
+           td=suicide.suicides_no
+           td=suicide.population
+           td=suicide.generation
+           td=suicide.suicides_100kpop
+           td=suicide.HDI_for_year
+           td=suicide.gdp_for_year_$
+           td=suicide.gdp_per_capita_$
