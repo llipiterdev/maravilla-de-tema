@@ -1,6 +1,7 @@
 //A través del cual se procesa las peticiones del usuario
 var express = require('express');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var cloudinary = require("cloudinary");
@@ -13,13 +14,14 @@ cloudinary.config({
 });
 var carga = multer({ dest: './uploads' });
 var app = express();
+var Suicide = null;
 mongoose.connect('mongodb://localhost:27017/Suicide_database', { useNewUrlParser: true })
-  .then(() => {
-    // Cuando se realiza la conexión, lanzamos este mensaje por consola
-    console.log('La conexión a MongoDB se ha realizado correctamente!!');
-  })
-  .catch(err => console.log(err));
-
+ .then(() => {
+ // Cuando se realiza la conexión, lanzamos este mensaje por consola
+ Suicide = mongoose.model("SU", suicideSchemaJSON,'SU');
+ console.log('La conexión a MongoDB se ha realizado correctamente!!');
+ })
+ .catch(err => console.log(err));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(carga);
@@ -29,47 +31,21 @@ app.use(express.static("public_globe"));
 app.use(express.static("public"));
 
 //Definir el schema de los datos
-var suicideSchemaJSON = {
+var suicideSchemaJSON = new Schema ({
   country: String,
-  year: String,
+  year: Number,
   sex: String,
   age: String,
-  suicides_no: String,
-  population: String,
+  suicides_no: Number,
+  population: Number,
   generation: String,
-  suicides_100kpop: String,
+  suicides_100kpop: Number,
   country_year: String,
   HDI_for_year: String,
   gdp_for_year_$: String,
   gdp_per_capita_$: String
-};
-/*
-suSchema.virtual("image.url").get(function () {
-  if (this.imageUrl === "" || this.imageUrl === "data.png") {
-    return "default.jpg";
-  }
-  return this.imageUrl;
 });
-*/
-var Suicide = mongoose.model("SU", suicideSchemaJSON);
-// Objeto JSON => Java Script Object Notation
-/*
-{
-  titulo: "Mi primer producto",
-  descripcion: "Un super producto"
-}
-{
-  titulo: "Mi primer producto",
-  descripcion: "Un super producto",
-  cantidad_inventario: 10
-}
-*/
 
-//HTTP verbo get
-//Metodos
-//GET = Obtener
-//POST = Enviar
-//Solicitud,Respuesta
 app.get("/", function (solicitud, respuesta) {
   respuesta.render("index");
   //res.end("Hola mundo");
@@ -158,8 +134,8 @@ app.post("/data", function (solicitud, respuesta) {
 
 
 app.get("/data", function (solicitud, respuesta) {
-  respuesta.render("data/form");
-});
+ respuesta.render("data/form");
+ });
 /*
 app.post("/menu", function (solicitud, respuesta) {
   if (solicitud.body.password == app_password) {
@@ -224,5 +200,103 @@ app.get("/globe", function (solicitud, respuesta) {
 app.get("/dashboard", function (solicitud, respuesta) {
   respuesta.render("dashboard/index");
 });
+
+app.get("/gender", function (solicitud, respuesta) {
+  console.log('Llego a consultar el conteo del genero')
+  mongoose.connection.db.collection('SU').aggregate([
+    {
+
+      $group : {
+        _id: '$sex',
+        total : {$sum:'$suicides_no'}
+    },
+    
+  }]).toArray(function(err, docs){
+
+    let totales = [];
+    if(err){
+
+      respuesta.send('Error en la consulta')
+    }
+    for(let i = 0;i<docs.length;i++){
+      let actual = docs[i];
+
+      totales.push({genero: actual._id,valor:actual.total})
+    }
+    respuesta.send({data : totales})
+
+  })
+
+});
+
+
+app.get("/generation", function (solicitud, respuesta) {
+console.log('Llego a consultar el conteo de la generación')
+mongoose.connection.db.collection('SU').aggregate([
+  {
+
+    $group : {
+      _id: '$generation',
+      total : {$sum:'$suicides_no'}
+  },
+  
+}]).toArray(function(err, docs){
+
+  let totales = [];
+  if(err){
+
+    respuesta.send('Error en la consulta')
+  }
+
+
+  for(let i = 0;i<docs.length;i++){
+    let actual = docs[i];
+   totales.push({generacion:actual._id, valor: actual.total})
+  }
+
+  respuesta.send({data : totales})
+
+})
+
+});
+
+app.get("/age", function (solicitud, respuesta) {
+  console.log('Llego a consultar el conteo de la edad')
+  mongoose.connection.db.collection('SU').aggregate([
+    {
+
+      $group : {
+        _id: '$age',
+        total : {$sum:'$suicides_no'}
+      }
+    },
+    {
+    $sort : {
+      _id: 1
+    }
+  } 
+  ]).toArray(function(err, docs){
+
+    let totales = [];
+    if(err){
+
+      respuesta.send('Error en la consulta')
+    }
+    for(let i = 0;i<docs.length;i++){
+      let actual = docs[i];
+
+      if(actual._id == '5-14 years'){
+        totales.unshift({edad: actual._id.replace(" years",""), valor:actual.total})
+      } else {
+        totales.push({edad: actual._id.replace(" years",""), valor:actual.total})
+      }
+    }
+    respuesta.send({data : totales})
+
+  })
+
+});
+
+
 //Puerto del servidor
 app.listen(8080);
