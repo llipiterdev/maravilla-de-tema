@@ -1,5 +1,5 @@
 function UrlParse(JsonFile) {
-  var url = "http://localhost/pruebajson/"+JsonFile+".json";
+  var url = "http://localhost:8080/"+JsonFile;
   return url;
 }
 function drawChart(JsonUrl,idChart) {  
@@ -22,7 +22,6 @@ function drawChart(JsonUrl,idChart) {
         },
         title: {
           display: true,
-          text: 'Suicidios por genero'
         },
         tooltips: {
           callbacks: {
@@ -65,6 +64,7 @@ function drawChart(JsonUrl,idChart) {
     return mychart;
   });
 }
-drawChart(UrlParse("prueba"),"michart");
-drawChart(UrlParse("rangoedades"),"michart2");
-drawChart(UrlParse("generacion"),"michart3");
+drawChart(UrlParse("gender"),"michart");
+drawChart(UrlParse("age"),"michart2");
+drawChart(UrlParse("generation"),"michart3");
+drawChart(UrlParse("continent"),"michart4");

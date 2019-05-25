@@ -368,6 +368,11 @@ Bar graph on left
 #barGraph .bar.er-scud, #missileTypeBtns .er-scud .check {
 	fill: #1F77B4;
 }
+
+#barGraph .bar.a, #missileTypeBtns .a .check {
+	fill: #1F77B4;
+}
+
 #barGraph .bar.hwasong-12, #missileTypeBtns .hwasong-12 .check {
 	fill: #7F7F7F;
 }

@@ -1,12 +1,18 @@
 extends ../layout.jade 
 block contenido
-    .container(style='border: 1px solid black; margin-top: 5%;')
+    .container(style='border: 1px solid white; margin-top: 5%;')
         .row
             .col
-            canvas#michart(style='width: 100%', height='300')
+                h5(style='text-align:center') Suicidios por generos
+                canvas#michart(style='width: 100%', height='300')
             .col
-            canvas#michart2(style='width: 100%', height='300')
+                h5(style='text-align:center') Suicidios por rango de edades
+                canvas#michart2(style='width: 100%', height='300')
         .row
             .col(style='margin-top: 5%;')
-            canvas#michart3(style='width: 100%', height='300')
-    script(src='/myjs.js')
+                h5(style='text-align:center') Suicidios por generaciones
+                canvas#michart3(style='width: 100%', height='300')
+            .col(style='margin-top: 5%;')
+                h5(style='text-align:center') Suicidios por continente
+                canvas#michart4(style='width: 100%', height='300')
+    script(src='js/myjs.js')

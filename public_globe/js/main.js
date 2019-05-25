@@ -68,7 +68,9 @@ var missileColors = {
 	'taepodong-1': 0xD62728,
 	'unha': 0x9467BD,
 	'unha-3': 0xC5B0D5,
-	'unknown': 0x8C564B
+	'unknown': 0x8C564B,
+	'a' : 0x1F77B4,
+
 };
 
 //	the currently selected test

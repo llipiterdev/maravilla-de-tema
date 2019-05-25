@@ -11,9 +11,14 @@ function onMarkerHover( event ){
 }
 
 function attachMarkerToTest( testName ){
+
+	console.log('Testname: '+testName)
 	//	look up the name to mesh
 	testName = testName.toUpperCase();
 	var test = testData[testName];
+
+	console.log('test: ')
+	console.log(test)
 	if( test === undefined )
 		return;
 
@@ -35,6 +40,8 @@ function attachMarkerToTest( testName ){
 	container.appendChild( marker );
 
 	marker.testName = testName;
+
+	console.log(marker)
 
 	marker.onLeft = test.markerOnLeft;
 	marker.selected = false;
@@ -77,6 +84,8 @@ function attachMarkerToTest( testName ){
 		}
 	};
 	var testLayer = marker.querySelector( '#testText');
+
+	console.log(testLayer)
 	marker.testLayer = testLayer;
 	var detailLayer = marker.querySelector( '#detailText' );
 	marker.detailLayer = detailLayer;
@@ -110,6 +119,7 @@ function attachMarkerToTest( testName ){
 	var nameLayer = marker.querySelector( '#testText' );
 
 	nameLayer.innerHTML = testName.replace(' ','&nbsp;');
+	nameLayer.innerHTML = test.date+'&nbsp;'+facilityName;
 
 	var detailText = '';
 	detailText += '<span class="key">' + dict['date'] + ':</span>&nbsp;' + datetime + '&nbsp;&nbsp;' +
