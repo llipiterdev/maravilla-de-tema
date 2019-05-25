@@ -1,28 +1,504 @@
-{
-	"facilities": {
-		"tonghae": {"name": "Tonghae Satellite Launching Ground", "lat": 40.8499966, "lon": 129.666664},
-		"chihari": {"name": "Chihari Missile Base", "lat": 38.62333, "lon": 126.6847},
-		"unknown": {"name": "Unknown", "lat": 39.200159, "lon": 125.673256},
-		"kittaeryong": {"name": "Kittaeryong Missile Base", "lat": 38.99083, "lon": 127.6236},
-		"sohae": {"name": "Sohae Satellite Launching Station", "lat": 39.6596, "lon": 124.7057},
-		"wonsan": {"name": "Wonsan Kalma International Airport", "lat": 39.1677, "lon": 127.4817},
-		"sunchon": {"name": "Sunchon Airbase", "lat": 39.412594, "lon": 125.89031},
-		"hodo": {"name": "Hodo Peninsula", "lat": 39.40167, "lon": 127.5369},
-		"hwangju": {"name": "Hwangju", "lat": 38.686834, "lon": 125.702005},
-		"kaesong": {"name": "Kaesong", "lat": 37.9382, "lon": 126.5878},
-		"nampo": {"name": "Nampo", "lat": 38.7523, "lon": 125.3247},
-		"sinpo": {"name": "Sinpo Shipyard", "lat": 40.0368, "lon": 128.1839},
-		"panghyon-ab": {"name": "Panghyon Airbase", "lat": 39.927472, "lon": 125.207889},
-		"kusong": {"name": "Kusong Testing Ground", "lat": 40.01325, "lon": 125.22302},
-		"pukchang": {"name": "Pukchang Airfield", "lat": 39.504417, "lon": 125.964333},
-		"north-kusong": {"name": "North Kusong Testing Ground", "lat": 40.0659, "lon": 125.2099},
-		"lake-yonpung": {"name": "Lake Yonpung", "lat": 39.618283, "lon": 125.8035851},
-		"panghyon": {"name": "Panghyon", "lat": 39.872153, "lon": 125.269192},
-		"mupyong-ni": {"name": "Mupyong-ni Arms Plant", "lat": 40.611208, "lon": 126.425743},
-		"masikryong": {"name": "Masikryong", "lat": 39.065962, "lon": 127.250257},
-		"pyongyang": {"name": "Pyongyang International Airport", "lat": 39.200159, "lon": 125.673256},
-		"pyongsong": {"name": "Pyongsong Field", "lat": 39.282, "lon": 125.869},
-		"baegun": {"name": "Baegun", "lat": 40.029678, "lon": 125.227326},
-		"monggumpo": {"name": "Monggumpo", "lat": 38.202, "lon": 124.851}
+{  
+	"facilities":{  
+	   "uruguay":{  
+		  "name":"Uruguay",
+		  "lat":-32.522779,
+		  "lon":-55.765835
+	   },
+	   "united kingdom":{  
+		  "name":"United Kingdom",
+		  "lat":55.378051,
+		  "lon":-3.435973
+	   },
+	   "turkmenistan":{  
+		  "name":"Turkmenistan",
+		  "lat":38.969719,
+		  "lon":59.556278
+	   },
+	   "thailand":{  
+		  "name":"Thailand",
+		  "lat":15.870032,
+		  "lon":100.992541
+	   },
+	   "switzerland":{  
+		  "name":"Switzerland",
+		  "lat":46.818188,
+		  "lon":8.227512
+	   },
+	   "sweden":{  
+		  "name":"Sweden",
+		  "lat":60.128161,
+		  "lon":18.643501
+	   },
+	   "sri lanka":{  
+		  "name":"Sri Lanka",
+		  "lat":7.873054,
+		  "lon":80.771797
+	   },
+	   "spain":{  
+		  "name":"Spain",
+		  "lat":40.463667,
+		  "lon":-3.74922
+	   },
+	   "united states":{  
+		  "name":"United States",
+		  "lat":37.09024,
+		  "lon":-95.712891
+	   },
+	   "south africa":{  
+		  "name":"South Africa",
+		  "lat":-30.559482,
+		  "lon":22.937506
+	   },
+	   "slovenia":{  
+		  "name":"Slovenia",
+		  "lat":46.151241,
+		  "lon":14.995463
+	   },
+	   "singapore":{  
+		  "name":"Singapore",
+		  "lat":1.352083,
+		  "lon":103.819836
+	   },
+	   "seychelles":{  
+		  "name":"Seychelles",
+		  "lat":-4.679574,
+		  "lon":55.491977
+	   },
+	   "uzbekistan":{  
+		  "name":"Uzbekistan",
+		  "lat":41.377491,
+		  "lon":64.585262
+	   },
+	   "serbia":{  
+		  "name":"Serbia",
+		  "lat":44.016521,
+		  "lon":21.005859
+	   },
+	   "saint vincent and grenadines":{  
+		  "name":"Saint Vincent and Grenadines",
+		  "lat":13.01102,
+		  "lon":-61.26667
+	   },
+	   "saint kitts and nevis":{  
+		  "name":"Saint Kitts and Nevis",
+		  "lat":17.357822,
+		  "lon":-62.782998
+	   },
+	   "russian federation":{  
+		  "name":"Russian Federation",
+		  "lat":55.751244,
+		  "lon":37.618423
+	   },
+	   "romania":{  
+		  "name":"Romania",
+		  "lat":45.943161,
+		  "lon":24.96676
+	   },
+	   "republic of korea":{  
+		  "name":"Republic of Korea",
+		  "lat":37.5326,
+		  "lon":127.024612
+	   },
+	   "puerto rico":{  
+		  "name":"Puerto Rico",
+		  "lat":18.220833,
+		  "lon":-66.590149
+	   },
+	   "saint lucia":{  
+		  "name":"Saint Lucia",
+		  "lat":13.909444,
+		  "lon":-60.978893
+	   },
+	   "poland":{  
+		  "name":"Poland",
+		  "lat":51.919438,
+		  "lon":19.145136
+	   },
+	   "paraguay":{  
+		  "name":"Paraguay",
+		  "lat":-23.442503,
+		  "lon":-58.443832
+	   },
+	   "oman":{  
+		  "name":"Oman",
+		  "lat":21.512583,
+		  "lon":55.923255
+	   },
+	   "trinidad and tobago":{  
+		  "name":"Trinidad and Tobago",
+		  "lat":10.691803,
+		  "lon":-61.222503
+	   },
+	   "netherlands":{  
+		  "name":"Netherlands",
+		  "lat":52.132633,
+		  "lon":5.291266
+	   },
+	   "mexico":{  
+		  "name":"Mexico",
+		  "lat":23.634501,
+		  "lon":-102.552784
+	   },
+	   "mauritius":{  
+		  "name":"Mauritius",
+		  "lat":-20.348404,
+		  "lon":57.552152
+	   },
+	   "malta":{  
+		  "name":"Malta",
+		  "lat":35.937496,
+		  "lon":14.375416
+	   },
+	   "slovakia":{  
+		  "name":"Slovakia",
+		  "lat":48.669026,
+		  "lon":19.699024
+	   },
+	   "luxembourg":{  
+		  "name":"Luxembourg",
+		  "lat":49.815273,
+		  "lon":6.129583
+	   },
+	   "united arab emirates":{  
+		  "name":"United Arab Emirates",
+		  "lat":23.424076,
+		  "lon":53.847818
+	   },
+	   "lithuania":{  
+		  "name":"Lithuania",
+		  "lat":55.169438,
+		  "lon":23.881275
+	   },
+	   "kyrgyzstan":{  
+		  "name":"Kyrgyzstan",
+		  "lat":41.20438,
+		  "lon":74.766098
+	   },
+	   "kiribati":{  
+		  "name":"Kiribati",
+		  "lat":-3.370417,
+		  "lon":-168.734039
+	   },
+	   "norway":{  
+		  "name":"Norway",
+		  "lat":60.472024,
+		  "lon":8.468946
+	   },
+	   "kazakhstan":{  
+		  "name":"Kazakhstan",
+		  "lat":48.019573,
+		  "lon":66.923684
+	   },
+	   "kuwait":{  
+		  "name":"Kuwait",
+		  "lat":29.31166,
+		  "lon":47.481766
+	   },
+	   "jamaica":{  
+		  "name":"Jamaica",
+		  "lat":18.109581,
+		  "lon":-77.297508
+	   },
+	   "suriname":{  
+		  "name":"Suriname",
+		  "lat":3.919305,
+		  "lon":-56.027783
+	   },
+	   "israel":{  
+		  "name":"Israel",
+		  "lat":31.046051,
+		  "lon":34.851612
+	   },
+	   "iceland":{  
+		  "name":"Iceland",
+		  "lat":64.963051,
+		  "lon":-19.020835
+	   },
+	   "hungary":{  
+		  "name":"Hungary",
+		  "lat":47.162494,
+		  "lon":19.503304
+	   },
+	   "macau":{  
+		  "name":"Macau",
+		  "lat":22.198745,
+		  "lon":113.543873
+	   },
+	   "guyana":{  
+		  "name":"Guyana",
+		  "lat":4.860416,
+		  "lon":-58.93018
+	   },
+	   "greece":{  
+		  "name":"Greece",
+		  "lat":39.074208,
+		  "lon":21.824312
+	   },
+	   "san marino":{  
+		  "name":"San Marino",
+		  "lat":43.94236,
+		  "lon":12.457777
+	   },
+	   "georgia":{  
+		  "name":"Georgia",
+		  "lat":42.315407,
+		  "lon":43.356892
+	   },
+	   "ecuador":{  
+		  "name":"Ecuador",
+		  "lat":-1.831239,
+		  "lon":-78.183406
+	   },
+	   "ukraine":{  
+		  "name":"Ukraine",
+		  "lat":48.379433,
+		  "lon":31.16558
+	   },
+	   "dominica":{  
+		  "name":"Dominica",
+		  "lat":15.414999,
+		  "lon":-61.370976
+	   },
+	   "panama":{  
+		  "name":"Panama",
+		  "lat":8.537981,
+		  "lon":-80.782127
+	   },
+	   "denmark":{  
+		  "name":"Denmark",
+		  "lat":56.26392,
+		  "lon":9.501785
+	   },
+	   "costa rica":{  
+		  "name":"Costa Rica",
+		  "lat":9.748917,
+		  "lon":-83.753428
+	   },
+	   "qatar":{  
+		  "name":"Qatar",
+		  "lat":25.354826,
+		  "lon":51.183884
+	   },
+	   "philippines":{  
+		  "name":"Philippines",
+		  "lat":12.879721,
+		  "lon":121.774017
+	   },
+	   "fiji":{  
+		  "name":"Fiji",
+		  "lat":-16.578193,
+		  "lon":179.414413
+	   },
+	   "colombia":{  
+		  "name":"Colombia",
+		  "lat":4.570868,
+		  "lon":-74.297333
+	   },
+	   "maldives":{  
+		  "name":"Maldives",
+		  "lat":3.202778,
+		  "lon":73.22068
+	   },
+	   "canada":{  
+		  "name":"Canada",
+		  "lat":56.130366,
+		  "lon":-106.346771
+	   },
+	   "new zealand":{  
+		  "name":"New Zealand",
+		  "lat":-40.900557,
+		  "lon":174.885971
+	   },
+	   "portugal":{  
+		  "name":"Portugal",
+		  "lat":39.399872,
+		  "lon":-8.224454
+	   },
+	   "el salvador":{  
+		  "name":"El Salvador",
+		  "lat":13.794185,
+		  "lon":-88.89653
+	   },
+	   "latvia":{  
+		  "name":"Latvia",
+		  "lat":56.879635,
+		  "lon":24.603189
+	   },
+	   "cabo verde":{  
+		  "name":"Cabo Verde",
+		  "lat":14.9208,
+		  "lon":-23.5083
+	   },
+	   "finland":{  
+		  "name":"Finland",
+		  "lat":61.92411,
+		  "lon":25.748151
+	   },
+	   "ireland":{  
+		  "name":"Ireland",
+		  "lat":53.41291,
+		  "lon":-8.24389
+	   },
+	   "turkey":{  
+		  "name":"Turkey",
+		  "lat":38.963745,
+		  "lon":35.243322
+	   },
+	   "bulgaria":{  
+		  "name":"Bulgaria",
+		  "lat":42.733883,
+		  "lon":25.48583
+	   },
+	   "germany":{  
+		  "name":"Germany",
+		  "lat":51.165691,
+		  "lon":10.451526
+	   },
+	   "guatemala":{  
+		  "name":"Guatemala",
+		  "lat":15.783471,
+		  "lon":-90.230759
+	   },
+	   "brazil":{  
+		  "name":"Brazil",
+		  "lat":-14.235004,
+		  "lon":-51.92528
+	   },
+	   "france":{  
+		  "name":"France",
+		  "lat":46.227638,
+		  "lon":2.213749
+	   },
+	   "croatia":{  
+		  "name":"Croatia",
+		  "lat":45.1,
+		  "lon":15.2
+	   },
+	   "bosnia and herzegovina":{  
+		  "name":"Bosnia and Herzegovina",
+		  "lat":43.915886,
+		  "lon":17.679076
+	   },
+	   "grenada":{  
+		  "name":"Grenada",
+		  "lat":12.262776,
+		  "lon":-61.604171
+	   },
+	   "bahamas":{  
+		  "name":"Bahamas",
+		  "lat":25.03428,
+		  "lon":-77.39628
+	   },
+	   "japan":{  
+		  "name":"Japan",
+		  "lat":36.204824,
+		  "lon":138.252924
+	   },
+	   "belgium":{  
+		  "name":"Belgium",
+		  "lat":50.503887,
+		  "lon":4.469936
+	   },
+	   "chile":{  
+		  "name":"Chile",
+		  "lat":-35.675147,
+		  "lon":-71.542969
+	   },
+	   "azerbaijan":{  
+		  "name":"Azerbaijan",
+		  "lat":40.143105,
+		  "lon":47.576927
+	   },
+	   "cuba":{  
+		  "name":"Cuba",
+		  "lat":21.521757,
+		  "lon":-77.781167
+	   },
+	   "austria":{  
+		  "name":"Austria",
+		  "lat":47.516231,
+		  "lon":14.550072
+	   },
+	   "belize":{  
+		  "name":"Belize",
+		  "lat":17.189877,
+		  "lon":-88.49765
+	   },
+	   "montenegro":{  
+		  "name":"Montenegro",
+		  "lat":42.708678,
+		  "lon":19.37439
+	   },
+	   "aruba":{  
+		  "name":"Aruba",
+		  "lat":12.52111,
+		  "lon":-69.968338
+	   },
+	   "italy":{  
+		  "name":"Italy",
+		  "lat":41.87194,
+		  "lon":12.56738
+	   },
+	   "czech republic":{  
+		  "name":"Czech Republic",
+		  "lat":49.817492,
+		  "lon":15.472962
+	   },
+	   "belarus":{  
+		  "name":"Belarus",
+		  "lat":53.709807,
+		  "lon":27.953389
+	   },
+	   "armenia":{  
+		  "name":"Armenia",
+		  "lat":40.069099,
+		  "lon":45.038189
+	   },
+	   "nicaragua":{  
+		  "name":"Nicaragua",
+		  "lat":12.865416,
+		  "lon":-85.207229
+	   },
+	   "barbados":{  
+		  "name":"Barbados",
+		  "lat":13.193887,
+		  "lon":-59.543198
+	   },
+	   "argentina":{  
+		  "name":"Argentina",
+		  "lat":-38.416097,
+		  "lon":-63.616672
+	   },
+	   "australia":{  
+		  "name":"Australia",
+		  "lat":-25.274398,
+		  "lon":133.775136
+	   },
+	   "bahrain":{  
+		  "name":"Bahrain",
+		  "lat":25.930414,
+		  "lon":50.637772
+	   },
+	   "estonia":{  
+		  "name":"Estonia",
+		  "lat":58.595272,
+		  "lon":25.013607
+	   },
+	   "cyprus":{  
+		  "name":"Cyprus",
+		  "lat":35.126413,
+		  "lon":33.429859
+	   },
+	   "antigua and barbuda":{  
+		  "name":"Antigua and Barbuda",
+		  "lat":17.060816,
+		  "lon":-61.796428
+	   },
+	   "albania":{  
+		  "name":"Albania",
+		  "lat":41.153332,
+		  "lon":20.168331
+	   }
 	}
-}
+ }

@@ -15,7 +15,7 @@ cloudinary.config({
 var carga = multer({ dest: './uploads' });
 var app = express();
 var Suicide = null;
-mongoose.connect('mongodb://localhost:27017/Suicide_database', { useNewUrlParser: true })
+mongoose.connect('mongodb://admin:UWNKVSWOJXVDHBYB@sl-us-south-1-portal.3.dblayer.com:19753/STD?authSource=admin&ssl=true', { useNewUrlParser: true })
  .then(() => {
  // Cuando se realiza la conexión, lanzamos este mensaje por consola
  Suicide = mongoose.model("SU", suicideSchemaJSON,'SU');
@@ -43,7 +43,10 @@ var suicideSchemaJSON = new Schema ({
   country_year: String,
   HDI_for_year: String,
   gdp_for_year_$: String,
-  gdp_per_capita_$: String
+  gdp_per_capita_$: String,
+  latitude: Number,
+  longitude: Number,
+  continent: String
 });
 
 app.get("/", function (solicitud, respuesta) {
@@ -296,6 +299,36 @@ app.get("/age", function (solicitud, respuesta) {
   })
 
 });
+
+app.get("/continent", function (solicitud, respuesta) {
+  console.log('Llego a consultar el conteo de la generación')
+  mongoose.connection.db.collection('SU').aggregate([
+    {
+  
+      $group : {
+        _id: '$continent',
+        total : {$sum:'$suicides_no'}
+    },
+    
+  }]).toArray(function(err, docs){
+  
+    let totales = [];
+    if(err){
+  
+      respuesta.send('Error en la consulta')
+    }
+  
+  
+    for(let i = 0;i<docs.length;i++){
+      let actual = docs[i];
+     totales.push({label:actual._id, valor: actual.total})
+    }
+  
+    respuesta.send({data : totales})
+  
+  })
+  
+  });
 
 
 //Puerto del servidor
