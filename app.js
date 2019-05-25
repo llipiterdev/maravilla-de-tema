@@ -221,7 +221,7 @@ app.get("/gender", function (solicitud, respuesta) {
     for(let i = 0;i<docs.length;i++){
       let actual = docs[i];
 
-      totales.push({genero: actual._id,valor:actual.total})
+      totales.push({label: actual._id,valor:actual.total})
     }
     respuesta.send({data : totales})
 
@@ -251,7 +251,7 @@ mongoose.connection.db.collection('SU').aggregate([
 
   for(let i = 0;i<docs.length;i++){
     let actual = docs[i];
-   totales.push({generacion:actual._id, valor: actual.total})
+   totales.push({label:actual._id, valor: actual.total})
   }
 
   respuesta.send({data : totales})
@@ -286,9 +286,9 @@ app.get("/age", function (solicitud, respuesta) {
       let actual = docs[i];
 
       if(actual._id == '5-14 years'){
-        totales.unshift({edad: actual._id.replace(" years",""), valor:actual.total})
+        totales.unshift({label: actual._id.replace(" years",""), valor:actual.total})
       } else {
-        totales.push({edad: actual._id.replace(" years",""), valor:actual.total})
+        totales.push({label: actual._id.replace(" years",""), valor:actual.total})
       }
     }
     respuesta.send({data : totales})
