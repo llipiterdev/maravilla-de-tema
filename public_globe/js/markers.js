@@ -122,18 +122,12 @@ function attachMarkerToTest( testName ){
 	nameLayer.innerHTML = test.date+'&nbsp;'+facilityName;
 
 	var detailText = '';
-	detailText += '<span class="key">' + dict['date'] + ':</span>&nbsp;' + datetime + '&nbsp;&nbsp;' +
-		'<span class="key">' + dict['test-outcome'] + ':</span>&nbsp;' + dict[test.outcome] + '<br />' +
-		'<span class="key">' + dict['missile-name'] + ':</span>&nbsp;' + missile.name + '&nbsp;&nbsp;' +
-		'<span class="key">' + dict['missile-type'] + ':</span>&nbsp;' + missile.type + '<br />' +
-		'<span class="key">' + dict['facility-name'] + ':</span>&nbsp;' + facilityName + '<br />' +
-		'<span class="key">' + dict['landing-location'] + ':</span>&nbsp;' + dict[test.landingLocation.name] + '<br />' +
-		'<span class="key">' + dict['apogee'] + ':</span>&nbsp;' + apogee + '&nbsp;&nbsp;' +
-		'<span class="key">' + dict['distance-travelled'] + ':</span>&nbsp;' + distance;
+	detailText +=
+		'<span class="key">' + 'Suicides number' + ':</span>&nbsp;' + test.suicides + '<br />';
 	marker.detailText = detailText;
 
-	var descriptionText = '<span class="key">' + dict['description'] + ':</span>&nbsp;' + test.description;
-	marker.descriptionText = descriptionText;
+	// var descriptionText = '<span class="key">' + dict['description'] + ':</span>&nbsp;' + test.description;
+	// marker.descriptionText = descriptionText;
 
 
 	var markerOver = function(e){
@@ -152,8 +146,8 @@ function attachMarkerToTest( testName ){
 		marker.classList.add('selected');
 		detailLayer.innerHTML = detailText;
 		detailLayer.style.display = 'block';
-		descriptionLayer.innerHTML = descriptionText;
-		descriptionLayer.style.display = 'block';
+		// descriptionLayer.innerHTML = descriptionText;
+		// descriptionLayer.style.display = 'block';
 	}
 	else{
 		marker.addEventListener( 'mouseover', markerOver, false );

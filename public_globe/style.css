@@ -643,6 +643,7 @@ Bar graph on left
 }
 #missileTypeBtns .missileTypeBtnGroup {
 	float: right;
+	width: 30px;
 }
 #missileTypeBtns>div>div {
 	cursor: pointer;

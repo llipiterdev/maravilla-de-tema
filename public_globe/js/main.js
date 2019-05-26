@@ -142,6 +142,7 @@ function start(e) {
 var Selection = function(selectedYear, selectedTest) {
 	this.selectedYear = selectedYear;
 	this.selectedTest = selectedTest;
+	
 
 	this.outcomeCategories = new Object();
 	for (var i in outcomeLookup) {
@@ -245,13 +246,15 @@ function initScene() {
 	atmosphere.scale.x = atmosphere.scale.y = atmosphere.scale.z = 1.8;
 	rotating.add(atmosphere);
 
+	console.log('Timebins test')
+	console.log(timeBins)
 	for( var i in timeBins ){
 		var bin = timeBins[i].data;
 		for( var s in bin ){
 			var set = bin[s];
 
 			var seriesPostfix = set.series ? ' [' + set.series + ']' : '';
-			var testName = (set.date + ' ' + missileLookup[set.missile].name + seriesPostfix).toUpperCase();
+			var testName = (set.date + ' ' + set.facility + seriesPostfix).toUpperCase();
 
 			selectableTests.push( testName );
 		}

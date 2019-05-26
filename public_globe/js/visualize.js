@@ -89,7 +89,7 @@ function buildDataVizGeometries( linearData ){
 			var set = yearBin[s];
 
 			var seriesPostfix = set.series ? ' [' + set.series + ']' : '';
-			set.testName = (set.date + ' ' + missileLookup[set.missile].name + seriesPostfix).toUpperCase();
+			set.testName = (set.date + ' ' + set.facility + seriesPostfix).toUpperCase();
 
 			var facilityName = set.facility;
 			facility = facilityData[facilityName];
