@@ -94,8 +94,7 @@ function DrawLineChart(JsonUrl, idChart) {
           }],
         },
         title: {
-          display: true,
-          text: 'Suicidios por cada 100.000 habitantes'
+          display: false
         },
         tooltips: {
           callbacks: {
