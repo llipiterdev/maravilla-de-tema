@@ -57,10 +57,6 @@ app.get("/", function (solicitud, respuesta) {
   //res.end("Hola mundo");
 });
 
-app.get('/dashboard', function(req, res){
-  res.sendFile(__dirname + 'myjs.js');
-});
-
 /*
 app.get("/menu", function (solicitud, respuesta) {
   Product.find(function (error, documento) {
@@ -209,6 +205,7 @@ app.get("/globe", function (solicitud, respuesta) {
   respuesta.render("globe/index");
 });
 app.get("/dashboard", function (solicitud, respuesta) {
+  respuesta.sendFile(__dirname+'/public/js/myjs.js');
   respuesta.render("dashboard/index");
 });
 
@@ -309,7 +306,7 @@ app.get("/age", function (solicitud, respuesta) {
 });
 
 app.get("/continent", function (solicitud, respuesta) {
-  console.log('Llego a consultar el conteo de la generación')
+  console.log('Llego a consultar el conteo por cada continente')
   mongoose.connection.db.collection('SU').aggregate([
     {
   
