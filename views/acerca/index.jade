@@ -1,4 +1,80 @@
 extends ../layout.jade 
 block contenido
- div(class="text-center espacio-arriba2")
-  h2(class="anton naranja mediano") Acerca del Tema
+    .container
+        .row
+            .col-md-12
+                h2(cass="anton naranja mediano") Acerca del Tema       
+                p Suicidios alrededor del mundo de 1985 a 2015          
+                p.text-right
+                    small La información de a continuación se basa según las visualizaciones del 
+                        a.naranja(href='/dashboard') dashboard
+            .col-md-12                          
+                p La información ha sido tomada de Kaggle, un dataset de información desde 1985 hasta 2016. Este dataset  se ha modificado para eliminar 
+                |información del 2016 puesto que no había registros suficientes para sacar conclusiones a
+                |partir de estos. Otra cosa que cabe anotar es que había muy poca información en
+                |cuanto a países correspondientes al continente africano, muy pocos países
+                |tenían registros aquí. En cuanto a otros países importantes que hacen falta en el dataset
+                |son china e india, ya que poseen una gran
+                |cantidad de población y podrían afectar de forma significativa al momento de
+                |hacer estadísticas globales.
+            .col-md-12
+                p Algunas conclusiones rápidas que se puede determinar:
+                p
+                    | El promedio de suicidios está disminuyendo a medida que han transcurrido los años
+                p
+                    | En promedio, a medida que envejece la población, el número de suicidios aumenta
+                p
+                    | Hay una relación positiva muy débil entre el número de suicidios y el GDP del país
+                p
+                    | Hay una clara diferencia alrededor del mundo en la relación entre suicidios entre hombres y mujeres
+                p Según un análisis de         
+                    a.naranja(href='https://www.theguardian.com/society/2019/feb/07/suicide-rates-falling-around-the-world-study-says', title='Suicide rates falling around the world - The guardian') “The guardian”
+                p
+                    | la razón por la que la tasa de
+                    | suicidios está disminuyendo se debe ala urbanización, la libertad de las
+                    | personas, la implementación de políticas orientadas a mejorar la calidad de
+                    | vida de las personas y mejor acceso a la salud. Sin embargo, la organización
+                    | mundial para la salud dice que alrededor de 800000 personas se quitan la vida
+                    | cada año, lo que representa un problema de salud pública.
+                p.text-right
+                    i                            
+                        | In the UK, Samaritans can be contacted on 116 123 or email 
+                        a.naranja(href='mailto:jo@samaritans.org') jo@samaritans.org. 
+                        | In the US,
+                        | the National Suicide Prevention Lifeline is 1-800-273-8255. In Australia, the
+                        | crisis support service Lifeline is 13 11 14. Other international suicide
+                        | helplines can be found at 
+                        a.naranja(href='www.befrienders.org') www.befrienders.org
+                        |.                        
+                p
+                    | Una de las razones que explica porque los 
+                    a.naranja(href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5916258/', title='Suicide rates in older adults - 10.2147/CIA.S130670')
+                        | índices de suicidio aumentan para personas mayores se debe principalmente a:
+                ul
+                  li Desordenes psiquiátricos y neurocognitivos
+                  li Exclusión social
+                  li Discapacidades mentales
+                  li Inhibición cognitiva y toma de decisiones
+                  li Enfermedades físicas
+                  li Dolor físico y psicológico
+                p
+                    | Algo que puede parecer contraproducente es el hecho de que a
+                    | medida que un país se desarrolla económicamente, en promedio, las tasas de
+                    | suicidio no parecen disminuir. Según un 
+                    a.naranja(href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5153284/', title='', relation='', between='', suicide='', rate='', and='', economic='', growth='', in='', china='', -='', 10.2147='', ndt.s116148='') estudio realizado en china
+                    | , las tasas
+                    | de suicidio se relacionan con pérdidas económicas (como inversión en el futuro
+                    | sin ganancia alguna) o inestabilidad en una relación sentimental.
+                p
+                    | También se evidencia que, aunque las mujeres suelen entrar
+                    | en depresión, los hombres son aquellos que suelen cometer suicidio en más
+                    | ocasiones, algo que se conoce como la paradoja de género en el comportamiento
+                    | suicida. 
+                    a.naranja(href='https://en.wikipedia.org/wiki/Gender_differences_in_suicide', title='Gender diferences in suicide - Wikipedia') Algunas explicaciones
+                    |  que se dan son sobre la construcción social de
+                    | la masculinidad hegemónica y la feminidad. Un hombre que recibe refuerzo
+                    | constante de esta tendencia esta menos arriesgado a poseer pensamientos suicidas.
+                    br(clear='all', style='page-break-before:always')                
+                p
+                    a.naranja(href='https://www.kaggle.com/lmorgan95/r-suicide-rates-in-depth-stats-insights/report') Ver análisis de Kaggle
+                

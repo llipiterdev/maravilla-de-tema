@@ -1,8 +1,8 @@
 function UrlParse(JsonFile) {
-  var url = "http://localhost:8080/"+JsonFile;
-  return url;
+    var url = "http://localhost:8080/" + JsonFile;
+    return url;
 }
-function drawChart(JsonUrl,idChart) {  
+function DrawBarChart(JsonUrl, idChart) {
   $.getJSON(JsonUrl, function (jsondata) {
     var chartData = {
       type: 'bar',
@@ -11,10 +11,10 @@ function drawChart(JsonUrl,idChart) {
         datasets: []
       },
       options: {
+        responsive: false,
         legend:{
           position: 'bottom'
         },
-        responsive: false,
         scales: {
           yAxes: [{
             ticks: {
@@ -25,6 +25,7 @@ function drawChart(JsonUrl,idChart) {
         },
         title: {
           display: true,
+          text: 'Suicidios por genero'
         },
         tooltips: {
           callbacks: {
@@ -63,10 +64,11 @@ function drawChart(JsonUrl,idChart) {
     }
     var ctx = document.getElementById(idChart).getContext('2d');
     var mychart = new Chart(ctx, chartData);
-    console.log(chartData);
+    //console.log(chartData);
     return mychart;
   });
 }
+
 
 function DrawLineChart(JsonUrl, idChart) {
   $.getJSON(JsonUrl, function (jsondata) {
@@ -125,9 +127,9 @@ function DrawLineChart(JsonUrl, idChart) {
   });
 
 }
-drawChart(UrlParse("gender"),"michart");
-drawChart(UrlParse("age"),"michart2");
-drawChart(UrlParse("generation"),"michart3");
-drawChart(UrlParse("continent"),"michart4");
+DrawBarChart(UrlParse("gender"),"michart");
+DrawBarChart(UrlParse("age"),"michart2");
+DrawBarChart(UrlParse("generation"),"michart3");
+DrawBarChart(UrlParse("continent"),"michart4");
 DrawLineChart(UrlParse("yearper100k"),"michart5");
 DrawLineChart(UrlParse("yearper100kco"),"michart6");
